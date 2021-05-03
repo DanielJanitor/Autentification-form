@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--FONT AWSOME-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+
+    <!--BOOTSTRAP 5-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+
+    <!--My Style-->
+    <style>
+        body {
+            height: 100vh;
+            background-color: gainsboro;
+        }
+        .logo {
+            color: #fff;
+            font-family: 'Contrail One', cursive;
+            margin-top: 0.2rem;
+            padding-top: 0.5rem;
+        }
+        *{
+            box-sizing: border-box;
+        }
+
+        .wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            margin: 0;
+        }
+
+        .cont{
+            background-color: ghostwhite;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgb(0, 0, 0, 0.3);
+            width: 420px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .header{
+            text-align: center;
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 20px 40px;
+        }
+
+        .header h2{
+            margin: 0;
+        }
+
+        .formm{
+            padding: 20px 40px;
+        }
+
+        .form-controll{
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-controll label {
+            display: inline-block;
+        }
+
+        .form-controll input{
+            border: 2px solid #F0F0F0;
+            border-radius: 4px;
+            display: block;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .form-controll i {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            visibility: hidden;
+        }
+
+        .form-controll small{
+            position: absolute;
+            bottom: -18px;
+            left: 0;
+            visibility: hidden;
+        }
+        .formm button{
+            display: block;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .form-controll.success input{
+            border-color: #2ecc71;
+        }
+        .form-controll.error input{
+            border-color: #e74c3d;
+        }
+
+        .form-controll.success i.fa-check-circle{
+            color: #2ecc71;
+            visibility: visible;
+        }
+        .form-controll.error i.fa-exclamation-circle{
+            color: #e74c3d;
+            visibility: visible;
+        }
+
+        .form-controll.error small{
+            color: #e74c3d;
+            visibility: visible;
+        }
+
+        
+        .message{
+            
+            visibility: hidden;
+        }
+        .result{
+            text-align: center;
+            visibility: visible;
+        }
+        
+       
+    </style>
+    <title>Validation Form</title>
+
+</head>
+<body>
+
+    <div class="row pt-1 m-0 bg-dark">
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <div>
+                <h1 class="logo">JD</h1>
+            </div>
+        </div>
+        <div class="col-md-6 p-2">
+            <div class="nav d-flex justify-content-center">
+                <h2 class="text-light align-self-center">Validation Form</h2>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <h5 class="text-light date"></h5>
+        </div>
+    </div>
+
+
+    <div class="wrapper">
+        <div class="cont">
+            <div class="header">
+                <h2>Create Account</h2>
+            </div>
+            <form action="" class="formm" id="form">
+                <div class="form-controll">
+                    <lable>User Name</lable>
+                    <input type="text" placeholder="User Name" id="username">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error Message</small>
+                </div>
+          
+
+           
+                <div class="form-controll">
+                    <lable>Email</lable>
+                    <input type="email" placeholder="Email" id="email">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error Message</small>
+                </div>
+            
+
+            
+                <div class="form-controll">
+                    <lable>Password</lable>
+                    <input type="password" placeholder="Password" id="password">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error Message</small>
+                </div>
+           
+
+           
+                <div class="form-controll">
+                    <lable>Password Check</lable>
+                    <input type="password" placeholder="Re-Type Passowrd" id="password2">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error Message</small>
+                </div>
+                <div class="message">User Has been created</div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+            
+        </div>
+    </div>
+   
+    <script>
+        //Date
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yy = today.getFullYear();
+        let day = `${dd}.${mm}.${yy}`;
+        document.querySelector('.date').innerText = day;
+
+
+        const form = document.querySelector('#form');
+        const username = document.querySelector('#username');
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+        const password2 = document.querySelector('#password2');
+
+        //Listener of form
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            checkInputs();//call function
+            console.log();
+        });
+
+
+        //Function for check inputs
+        function checkInputs(){
+            const userNameValue =  username.value.trim();
+            const userEmailValue = email.value.trim();
+            const userPasswordValue =  password.value.trim();
+            const userPasswordValue2 = password2.value.trim();
+
+            let user;
+            let emaili;
+            let pass;
+            let pass2;
+        
+            //User
+            if (userNameValue === '') {
+                   setErrorFor(username, 'Username cannot be empty');
+                   console.log(username);
+                   user = false
+
+            }
+            else{
+                   setSuccessFor(username) ;
+                   user = true;
+                   
+            }
+
+
+            //Email
+            if (userEmailValue === '') {
+                   setErrorFor(email, 'Email cannot be empty');
+                   emaili = false
+            }
+            else if(!isEmail(userEmailValue)){
+                    setErrorFor(email,'Email is not valid');
+                    emaili = false
+            }
+            else{
+                   setSuccessFor(email);
+                   emaili = true;
+                   
+            }
+
+            //Password
+            if (userPasswordValue === '') {
+                   setErrorFor(password, 'Password cannot be empty');
+                   pass = false
+            }
+            else{
+                   setSuccessFor(password) ;
+                   pass = true;
+            }
+
+            //Password 2
+            if (userPasswordValue2 === '') {
+                   setErrorFor(password2, 'Password cannot be empty');
+                   pass2 = false
+            }else if (userPasswordValue !== userPasswordValue2) {
+                    setErrorFor(password2, 'Passwords does not match');
+                    pass2 = false
+            }
+            else{
+                   setSuccessFor(password2) ;
+                   pass2= true;
+            }
+
+            //show a succces message
+            if (user === true && emaili === true && pass === true && pass2 === true ) {
+            }
+            document.querySelector('.message').setAttribute('class', 'result');
+
+        };
+
+
+
+
+        function setErrorFor(input, message){
+            const formControl = input.parentElement;
+            console.log(formControl);
+            const small = formControl.querySelector('small');
+
+            //add error message inside small
+            small.innerText = message;
+            //add error class
+            formControl.className = 'form-controll error';
+        }
+
+        function setSuccessFor(input){
+            const formControl = input.parentElement;
+            formControl.className = 'form-controll success';
+            
+        }
+
+        function isEmail(email){
+            return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+        };
+
+
+
+    </script>
+
+</body>
+
+</html>
